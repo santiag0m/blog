@@ -4,10 +4,12 @@ layout: default
 
 ## Posts
 
-<ul>
+This is the index
+
+<!-- <ul>
   {% for post in site.posts %}
     <li>
       <a href="{{ post.url }}">{{ post.title }}</a>
     </li>
   {% endfor %}
-</ul>
+</ul> -->
