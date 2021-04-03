@@ -68,8 +68,8 @@ Where each subscript is associated with the quaternion unit basis.
 
 This matrix can be interpreted as defining a rotation $$Q$$ of a 3-Dimensional vector $$P$$, which is very useful as an inductive bias to learn rotations inside Neural Networks (an experiment demonstrated in the paper). However, in its common form is not very useful for other dimensions, so the authors propose to reformulate it as the sum of Kronecker Products:
 
+<div id="rescale" style="display:inline-block">
 $$
-\def\f@size{7}
 \begin{align}
 \label{eq:ASQ_kron}
 \underbrace{
@@ -134,6 +134,7 @@ $$
 .
 \end{align}
 $$
+</div>
 
 As can be seen, the matrices $$\bf{A_i} \in \mathbb{R}^{4 \times 4}$$ and $$\bf{S_i} \in \mathbb{R}^{\frac{4}{4} \times \frac{4}{4}}$$, which demonstrates that a PHM layer with $$n=4$$ can learn quaternion multiplication. Given that the same result holds for $$8D$$ (octonions), $$16D$$ (sedenions), and the fact that $$n$$ can take more values than just $$\{4, 8, 16\}$$, the PHM is said to generalize hypercomplex multiplication to $$nD$$.
 

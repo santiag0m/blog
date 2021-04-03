@@ -2,6 +2,25 @@
 layout: default
 ---
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<!-- Fit MathJax code to container: https://codepen.io/mathjax/pen/qEdqPg -->
+<script type="text/javascript">
+    window.MathJax = {
+      AuthorInit: function () {
+        MathJax.Hub.Register.StartupHook("Begin",function () {
+          MathJax.Hub.Queue(function () {
+            var math = document.getElementById("rescale");
+            var w = math.offsetWidth, W = math.parentNode.offsetWidth-40;
+            if (w > W) {
+              math.style.fontSize = (95*W/w)+"%";
+              MathJax.Hub.getAllJax(math)[0].Rerender();
+            }
+          });
+        });
+      },
+      jax: ["input/TeX","output/HTML-CSS","output/NativeMML"],
+      extensions: ["tex2jax.js"],
+    };
+</script>
 <h1>{{ page.title }}</h1>
 <p>{{ page.date | date_to_string }} - {{ page.author }}</p>
 
