@@ -138,7 +138,7 @@ $$
 
 As can be seen, the matrices $$\bf{A_i} \in \mathbb{R}^{4 \times 4}$$ and $$\bf{S_i} \in \mathbb{R}^{\frac{4}{4} \times \frac{4}{4}}$$, which demonstrates that a PHM layer with $$n=4$$ can learn quaternion multiplication. Given that the same result holds for $$8D$$ (octonions), $$16D$$ (sedenions), and the fact that $$n$$ can take more values than just $$\{4, 8, 16\}$$, the PHM is said to generalize hypercomplex multiplication to $$nD$$.
 
-To close this section about the PHM layer, I want to show the results they achieved applying the layer to machine translation, which shows great results in parameter efficiency without sacrificing much performance:
+To close this section about the PHM layer, I want to show the results they achieved applying the layer to machine translation, which offers great results in parameter efficiency without sacrificing much performance:
 
 <p align="center">
   <img width="90%" src="{{ '/assets/images/phm_transformer_results.jpg' | relative_url }}">
@@ -146,7 +146,7 @@ To close this section about the PHM layer, I want to show the results they achie
 
 ### Why are Kronecker Products effective then?
 
-The reason why this paper caught my attention, was because I had read about the Kronecker Product being used in a similar manner for Convolutional Neural Networks. In particular, a 2015 paper called [**Exploiting Local Structures with the Kronecker Layer in Convolutional Networks**](https://arxiv.org/abs/1512.09194).
+This paper caught my attention because I had read about the Kronecker Product being used in a similar manner for Convolutional Neural Networks. In particular, a 2015 paper called [**Exploiting Local Structures with the Kronecker Layer in Convolutional Networks**](https://arxiv.org/abs/1512.09194).
 
 In this paper two new types of layers are proposed. First the Kronecker Fully-Connected (KFC) layer:
 
@@ -170,7 +170,7 @@ where $$\mathcal{A}_i$$ and $$\mathcal{B}_i^{(i)}$$ are $$4D$$ tensors with simi
 
 In contrast to PHM, the authors of the KConv paper arrive to the sum of Kronecker Products not by construction, but by improving on the ideas about low rank decomposition of Convolutional Neural Networks proposed in [**Speeding up convolutional Neural Networks with low rank expansions**](https://arxiv.org/abs/1405.3866) and [**Exploiting Linear Structure Within Convolutional Networks for Efficient Evaluation**](https://arxiv.org/abs/1404.0736), amongst others.
 
-Special emphasis must be made on their use of the duality between approximating weight matrices using the sum of Kronecker Products and Singular Value Decomposition (SVD). This is demonstrated in Section 5.5 of the paper [**Approximation with Kronecker Products**](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.42.1924&rep=rep1&type=pdf), and it is extremely important, as it gives a hint on why such parametrizations work in practice:
+Particular emphasis must be made on their use of the duality between approximating weight matrices using the sum of Kronecker Products and Singular Value Decomposition (SVD). This duality is demonstrated in Section 5.5 of the paper [**Approximation with Kronecker Products**](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.42.1924&rep=rep1&type=pdf), and it is crucial, as it gives a hint on why such parametrizations work in practice:
 
 _"Next, we consider the situation when the matrix A to be approximated is a sum of Kronecker products:_
 
@@ -188,7 +188,7 @@ _is a rank-$$p$$ matrix."_
 
 Although explaining the rearrangement operation $$\mathcal{R}(A)$$ is beyond the scope of this post (I highly encourage you to read the paper). This result shows how solving the problem of approximating a matrix $$A$$ with the sum of $$p$$ Kronecker Products is equivalent to the rank-$$p$$ SVD of a rearranged version of $$A$$.
 
-As it is the case with many signals in the real world, the intrinsic dimensionality of the transformer weights in the PHM paper is likely to be small. As such, low rank approximations might be able to capture most of the model behavior with few parameters, explaining the efficiency of the Kronecker Product approach.
+As it is the case with many signals in the real world, the intrinsic dimensionality of the transformer weights in the PHM paper is likely to be small. As such, low-rank approximations might be able to capture most of the model behavior with few parameters, explaining the efficiency of the Kronecker Product approach.
 
 <!-- Also, as a curious sidenote, both papers arrive to the same statement about Fully Connected layers (check Section 3.4 in the PHM paper and the end of Section 2 in the KConv paper). -->
 
@@ -203,9 +203,9 @@ _"Let $$\mathbf{A_i} \in \mathbb{R}^{m \times n}, \bf{B_i} \in \mathbb{R}^{1 \ti
 
 ### Final thoughts
 
-I came across the Kronecker Product back in 2018, when I was tasked to give a presentation on how to incorporate large scale context in Neural Networks for a Machine Learning class. Although my investigation began by looking at what was novel at the time ([**Deformable CNNs**](https://arxiv.org/abs/1703.06211) and the Atrous Spatial Pyramid Pooling scheme in [**Deeplab**](https://arxiv.org/abs/1706.05587)), it wasn't until I found a great blog post by Ferenc Huszár outlining the relationship between [Dilated Convolutions and Kronecker Factored Convolutions](https://www.inference.vc/dilated-convolutions-and-kronecker-factorisation/) that I became hooked on the subject.
+I came across the Kronecker Product back in 2018,when I worked on a school presentation about incorporating large scale context in Neural Networks. Although I started by looking at what was novel at the time ([**Deformable CNNs**](https://arxiv.org/abs/1703.06211) and the Atrous Spatial Pyramid Pooling scheme in [**Deeplab**](https://arxiv.org/abs/1706.05587)), it wasn't until I found a great blog post by Ferenc Huszár outlining the relationship between [Dilated Convolutions and Kronecker Factored Convolutions](https://www.inference.vc/dilated-convolutions-and-kronecker-factorisation/) that I became captivated by the subject.
 
-Turns out that there has been a long chain of papers on how to make Neural Networks efficient, all with different takes on which is the best way to do Matrix (or Tensor) Decomposition. From the ideas that influenced the development of the KConv layers, to the novel connection with hypercomplex multiplication proposed with the PHM layer, I have become convinced that the Kronecker Product is going to be a crucial tool in the path to understand Neural Networks.
+As it turns out, there has been a long chain of papers on making Neural Networks efficient, all with different takes on which is the best way to do Matrix (or Tensor) Decomposition. From the ideas that influenced the development of the KConv layers to the novel connection with hypercomplex multiplication proposed with the PHM layer, I have become convinced that the Kronecker Product will be a crucial tool in the path to understanding Neural Networks.
 
 ## References
 
