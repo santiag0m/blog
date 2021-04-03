@@ -4,10 +4,10 @@ title: Why Are Kronecker Products So Effective?
 author: Raúl Santiago Molina
 ---
 
-A few days ago the list of [ICLR 2021's Outstading Paper Awards](https://iclr-conf.medium.com/announcing-iclr-2021-outstanding-paper-awards-9ae0514734ab) was announced. From the list, one paper immediately caught my attention: [**Beyond Fully-Connected Layers with Quaternions: Parameterization of Hypercomplex Multiplications with $$1/n$$ Parameters**](https://openreview.net/forum?id=rcQdycl0zyk).
+A few days ago, the list of [ICLR 2021's Outstading Paper Awards](https://iclr-conf.medium.com/announcing-iclr-2021-outstanding-paper-awards-9ae0514734ab) was announced. One paper immediately caught my attention from the list: [**Beyond Fully-Connected Layers with Quaternions: Parameterization of Hypercomplex Multiplications with $$1/n$$ Parameters**](https://openreview.net/forum?id=rcQdycl0zyk).
 
 The main contribution of the paper is the "parameterized
-hypercomplex multiplication (PHM) layer", a new layer that is able to replace fully connected (FC) layers with high parameter efficiency.
+hypercomplex multiplication (PHM) layer", a new layer that can replace fully connected (FC) layers with high parameter efficiency.
 
 ### The PHM Layer
 
@@ -21,7 +21,7 @@ $$ \bf{y} = PHM(\bf{x}) = \bf{H}x + b$$
 
 For both layers we are learning a linear mapping ($$\bf{W}$$ or $$\bf{H} \in \mathbb{R}^{k \times d}$$) of the input $$\bf{x}$$.
 
-To have a clear understanding of what the proposed layer does, they give an introduction of the Kronecker Product. For matrices $$\bf{A} \in \mathbb{R}^{m \times n}$$ and $$\bf{B} \in \mathbb{R}^{p \times q}$$, the Kronecker Product $$\otimes$$ is defined as:
+To have a clear understanding of what the proposed layer does, the authors introduce the Kronecker Product. For matrices $$\bf{A} \in \mathbb{R}^{m \times n}$$ and $$\bf{B} \in \mathbb{R}^{p \times q}$$, the Kronecker Product $$\otimes$$ is defined as:
 
 $$
 \begin{align*}
@@ -43,9 +43,9 @@ $$
 
 Where $$\bf{A_i} \in \mathbb{R}^{n \times n}$$ and $$\bf{S_i} \in \mathbb{R}^{\frac{k}{n} \times \frac{d}{n}}$$.
 
-Such construction makes $$\bf{H}$$ very efficient in terms of parameter count, with approximately $$1/n$$ the number of parameters of a FC layer matrix $$\bf{W}$$. Assuming that $$kd > n^4$$, which is the case for high dimensional latent spaces found in practice.
+Such construction makes $$\bf{H}$$ very efficient in terms of parameter count, with approximately $$1/n$$ the number of parameters of an FC layer matrix $$\bf{W}$$. Assuming that $$kd > n^4$$, which is the case for high dimensional latent spaces found in practice.
 
-One of the first things I questioned after seeing this equation was the restriction of $$\bf{A_i}$$ to be symmetric. The authors provide an intuitive explanation from the point of view of quaternion multiplication (hence the name "hypercomplex multiplication", as the quaternion number system is a kind of [hypercomplex number system](https://en.wikipedia.org/wiki/Hypercomplex_number)). A cool property of quaternion multiplication (called the Hamilton Product), is that it can be rewritten as the following matrix:
+One of the first things I questioned after seeing this equation was the restriction of $$\bf{A_i}$$ to be symmetric. The authors provide an intuitive explanation from the point of view of quaternion multiplication (hence the name "hypercomplex multiplication", as the quaternion number system is a kind of [hypercomplex number system](https://en.wikipedia.org/wiki/Hypercomplex_number)). A nice property of quaternion multiplication (called the Hamilton Product), is that it can be rewritten as the following matrix:
 
 $$
 \begin{align}
@@ -68,7 +68,7 @@ Where each subscript is associated with the quaternion unit basis.
 
 This matrix can be interpreted as defining a rotation $$Q$$ of a 3-Dimensional vector $$P$$, which is very useful as an inductive bias to learn rotations inside Neural Networks (an experiment demonstrated in the paper). However, in its common form is not very useful for other dimensions, so the authors propose to reformulate it as the sum of Kronecker Products:
 
-<div id="rescale" style="display:inline-block">
+<div style="overflow-x: scroll">
 $$
 \begin{align}
 \label{eq:ASQ_kron}
@@ -140,7 +140,9 @@ As can be seen, the matrices $$\bf{A_i} \in \mathbb{R}^{4 \times 4}$$ and $$\bf{
 
 To close this section about the PHM layer, I want to show the results they achieved applying the layer to machine translation, which shows great results in parameter efficiency without sacrificing much performance:
 
-![Translation Results Table]({{ '/assets/images/phm_transformer_results.jpg' | relative_url }})
+<p align="center">
+  <img width="90%" src="{{ '/assets/images/phm_transformer_results.jpg' | relative_url }}">
+</p>
 
 ### Why are Kronecker Products effective then?
 
