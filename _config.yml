@@ -1,5 +1,5 @@
 theme: jekyll-theme-slate
 title: Santiago's blog
-
+base_url: /blog
 github:
   is_project_page: false
