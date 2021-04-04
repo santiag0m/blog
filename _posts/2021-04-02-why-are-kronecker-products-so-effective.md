@@ -45,7 +45,7 @@ Where $$\bf{A_i} \in \mathbb{R}^{n \times n}$$ and $$\bf{S_i} \in \mathbb{R}^{\f
 
 Such construction makes $$\bf{H}$$ very efficient in terms of parameter count, with approximately $$1/n$$ the number of parameters of an FC layer matrix $$\bf{W}$$. Assuming that $$kd > n^4$$, which is the case for high dimensional latent spaces found in practice.
 
-One of the first things I questioned after seeing this equation was the restriction of $$\bf{A_i}$$ to be symmetric. The authors provide an intuitive explanation from the point of view of quaternion multiplication (hence the name "hypercomplex multiplication", as the quaternion number system is a kind of [hypercomplex number system](https://en.wikipedia.org/wiki/Hypercomplex_number)). A nice property of quaternion multiplication (called the Hamilton Product), is that it can be rewritten as the following matrix:
+One of the first things I questioned after seeing this equation was the restriction of $$\bf{A_i}$$ to be square matrix. The authors provide an intuitive explanation from the point of view of quaternion multiplication (hence the name "hypercomplex multiplication", as the quaternion number system is a kind of [hypercomplex number system](https://en.wikipedia.org/wiki/Hypercomplex_number)). A nice property of quaternion multiplication (called the Hamilton Product), is that it can be rewritten as the following matrix:
 
 $$
 \begin{align}
@@ -203,7 +203,7 @@ _"Let $$\mathbf{A_i} \in \mathbb{R}^{m \times n}, \bf{B_i} \in \mathbb{R}^{1 \ti
 
 ### Final thoughts
 
-I came across the Kronecker Product back in 2018,when I worked on a school presentation about incorporating large scale context in Neural Networks. Although I started by looking at what was novel at the time ([**Deformable CNNs**](https://arxiv.org/abs/1703.06211) and the Atrous Spatial Pyramid Pooling scheme in [**Deeplab**](https://arxiv.org/abs/1706.05587)), it wasn't until I found a great blog post by Ferenc Huszár outlining the relationship between [Dilated Convolutions and Kronecker Factored Convolutions](https://www.inference.vc/dilated-convolutions-and-kronecker-factorisation/) that I became captivated by the subject.
+I came across the Kronecker Product back in 2018, when I worked on a school presentation about incorporating large scale context in Neural Networks. Although I started by looking at what was novel at the time ([**Deformable CNNs**](https://arxiv.org/abs/1703.06211) and the Atrous Spatial Pyramid Pooling scheme in [**Deeplab**](https://arxiv.org/abs/1706.05587)), it wasn't until I found a great blog post by Ferenc Huszár outlining the relationship between [Dilated Convolutions and Kronecker Factored Convolutions](https://www.inference.vc/dilated-convolutions-and-kronecker-factorisation/) that I became captivated by the subject.
 
 As it turns out, there has been a long chain of papers on making Neural Networks efficient, all with different takes on which is the best way to do Matrix (or Tensor) Decomposition. From the ideas that influenced the development of the KConv layers to the novel connection with hypercomplex multiplication proposed with the PHM layer, I have become convinced that the Kronecker Product will be a crucial tool in the path to understanding Neural Networks.
 
@@ -211,13 +211,13 @@ As it turns out, there has been a long chain of papers on making Neural Networks
 
 <!-- PHM -->
 
-- Zhang, Aston, et al. "Beyond Fully-Connected Layers with Quaternions: Parameterization of Hypercomplex Multiplications with $$1/n$$ Parameters." arXiv preprint arXiv:2102.08597 (2021).
+- Zhang, Aston, et al. "Beyond Fully-Connected Layers with Quaternions: Parameterization of Hypercomplex Multiplications with $$1/n$$ Parameters." arXiv preprint [arXiv:2102.08597](https://openreview.net/forum?id=rcQdycl0zyk) (2021).
 <!-- KConv -->
-- Zhou, Shuchang, et al. "Exploiting local structures with the kronecker layer in convolutional networks." arXiv preprint arXiv:1512.09194 (2015).
-- Jaderberg, Max, Andrea Vedaldi, and Andrew Zisserman. "Speeding up convolutional Neural Networks with low rank expansions." arXiv preprint arXiv:1405.3866 (2014).
-- Denton, Emily, et al. "Exploiting linear structure within convolutional networks for efficient evaluation." arXiv preprint arXiv:1404.0736 (2014).
-- Van Loan, Charles F., and Nikos Pitsianis. "Approximation with Kronecker products." Linear algebra for large scale and real-time applications. Springer, Dordrecht, 1993. 293-314.
+- Zhou, Shuchang, et al. "Exploiting local structures with the kronecker layer in convolutional networks." arXiv preprint [arXiv:1512.09194](https://arxiv.org/abs/1512.09194) (2015).
+- Jaderberg, Max, Andrea Vedaldi, and Andrew Zisserman. "Speeding up convolutional Neural Networks with low rank expansions." arXiv preprint [arXiv:1405.3866](https://arxiv.org/abs/1405.3866) (2014).
+- Denton, Emily, et al. "Exploiting linear structure within convolutional networks for efficient evaluation." arXiv preprint [arXiv:1404.0736](https://arxiv.org/abs/1404.0736) (2014).
+- Van Loan, Charles F., and Nikos Pitsianis. ["Approximation with Kronecker products."](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.42.1924&rep=rep1&type=pdf) Linear algebra for large scale and real-time applications. Springer, Dordrecht, 1993. 293-314.
 <!-- Conclusion -->
-- Dai, Jifeng, et al. "Deformable convolutional networks." Proceedings of the IEEE international conference on computer vision. 2017.
-- Chen, Liang-Chieh, et al. "Rethinking atrous convolution for semantic image segmentation." arXiv preprint arXiv:1706.05587 (2017).
+- Dai, Jifeng, et al. ["Deformable convolutional networks."](https://arxiv.org/abs/1703.06211) Proceedings of the IEEE international conference on computer vision. 2017.
+- Chen, Liang-Chieh, et al. "Rethinking atrous convolution for semantic image segmentation." arXiv preprint [arXiv:1706.05587](https://arxiv.org/abs/1706.05587) (2017).
 - "Dilated Convolutions and Kronecker Factored Convolutions." https://www.inference.vc/dilated-convolutions-and-kronecker-factorisation/
