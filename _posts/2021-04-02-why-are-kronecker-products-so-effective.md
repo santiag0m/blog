@@ -220,4 +220,4 @@ As it turns out, there has been a long chain of papers on making Neural Networks
 <!-- Conclusion -->
 - Dai, Jifeng, et al. ["Deformable convolutional networks."](https://arxiv.org/abs/1703.06211) Proceedings of the IEEE international conference on computer vision. 2017.
 - Chen, Liang-Chieh, et al. "Rethinking atrous convolution for semantic image segmentation." arXiv preprint [arXiv:1706.05587](https://arxiv.org/abs/1706.05587) (2017).
-- "Dilated Convolutions and Kronecker Factored Convolutions." https://www.inference.vc/dilated-convolutions-and-kronecker-factorisation/
+- "Dilated Convolutions and Kronecker Factored Convolutions." [https://www.inference.vc/dilated-convolutions-and-kronecker-factorisation/](https://www.inference.vc/dilated-convolutions-and-kronecker-factorisation/)
