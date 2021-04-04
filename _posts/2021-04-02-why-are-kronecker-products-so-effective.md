@@ -45,7 +45,7 @@ Where $$\bf{A_i} \in \mathbb{R}^{n \times n}$$ and $$\bf{S_i} \in \mathbb{R}^{\f
 
 Such construction makes $$\bf{H}$$ very efficient in terms of parameter count, with approximately $$1/n$$ the number of parameters of an FC layer matrix $$\bf{W}$$. Assuming that $$kd > n^4$$, which is the case for high dimensional latent spaces found in practice.
 
-One of the first things I questioned after seeing this equation was the restriction of $$\bf{A_i}$$ to be square matrix. The authors provide an intuitive explanation from the point of view of quaternion multiplication (hence the name "hypercomplex multiplication", as the quaternion number system is a kind of [hypercomplex number system](https://en.wikipedia.org/wiki/Hypercomplex_number)). A nice property of quaternion multiplication (called the Hamilton Product), is that it can be rewritten as the following matrix:
+One of the first things I questioned after seeing this equation was the restriction of $$\bf{A_i}$$ to be a square matrix. The authors provide an intuitive explanation from the point of view of quaternion multiplication (hence the name "hypercomplex multiplication", as the quaternion number system is a kind of [hypercomplex number system](https://en.wikipedia.org/wiki/Hypercomplex_number)). A nice property of quaternion multiplication (called the Hamilton Product), is that it can be rewritten as the following matrix:
 
 $$
 \begin{align}
