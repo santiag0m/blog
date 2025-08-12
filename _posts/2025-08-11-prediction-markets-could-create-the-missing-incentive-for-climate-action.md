@@ -5,9 +5,7 @@ author: Raúl Santiago Molina
 ---
 
 
-## The Core Problem
-
-We know climate change is real. We know it's happening now. And yet, we do nothing about it. We treat it as something we prepare for rather than something we actively avoid and nobody thinks they can make a difference.
+We know climate change is real. We know it's happening now. And yet, we do nothing about it. We treat it as something we prepare for rather than something we actively avoid and nobody thinks they can make a difference. But what if there was a way to change that, and even profit from climate success?
 
 The main problem is that there's no clean, scalable economic incentive tied to making climate progress happen.
 Sure, there are subsidies, credits, and ESG funds. But for most people there's no direct way to profit from success in hitting climate targets. For young people and entrepreneurs, this means that betting your career on climate just looks like a bad financial decision.
