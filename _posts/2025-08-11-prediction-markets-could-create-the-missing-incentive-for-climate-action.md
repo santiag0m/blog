@@ -95,5 +95,9 @@ If you're a founder, imagine using a YES-backed loan to scale your project.
 The missing incentive for climate action might just be a price.
 
 
+<br><br>
 
-*Disclaimer: ChatGPT helped me write a lot of this because, trust me, I am really not a good writer. But I believe the idea is worth sharing*
+
+*Disclaimer: ChatGPT helped me write a lot of this because, trust me, I am really not a good writer. But I believe the idea is worth sharing.*
+
+*Also would like to thank my friend Sebastian for helping me proof read and edit this post*
