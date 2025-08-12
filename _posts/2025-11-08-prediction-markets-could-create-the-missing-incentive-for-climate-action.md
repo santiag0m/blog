@@ -1,4 +1,8 @@
-# Prediction Markets Could Create the Missing Incentive for Climate Action
+---
+layout: post
+title: Prediction Markets Could Create the Missing Incentive for Climate Action
+author: Raúl Santiago Molina
+---
 
 
 ## The Core Problem
