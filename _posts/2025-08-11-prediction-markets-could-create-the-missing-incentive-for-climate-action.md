@@ -86,7 +86,7 @@ There has also been some work exploring the idea of prediction markets as a way 
 ## Why Publish This Publicly?
 
 I'm not building this right now. I don't have the capital, platform, or regulatory setup, and definitely not the experience.
-But this idea shouldn't sit in a drawer. It belongs in the open, where anyone — exchange operators, climate investors, fintech founders — can take it forward.
+But this idea shouldn't sit in a drawer. It belongs in the open, where anyone (e.g. exchange operators, climate investors, fintech founders) can take it forward.
 
 If you run a prediction market, think about creating this pack.
 If you're a climate VC, think about seeding the liquidity.
