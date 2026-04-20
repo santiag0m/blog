@@ -204,7 +204,19 @@ This is the same form as the [KFC](https://arxiv.org/abs/1512.09194) and [PHM](h
 
 When the stride is smaller than the kernel size (the common case), input patches overlap. To handle this, the input must be rearranged into a **window format** where each element is a non-overlapping tile. The composed kernel still has Kronecker structure, but operates on the rearranged input.
 
-A key computational insight: this rearrangement and expansion can be done efficiently using **transpose convolution**. Rather than materializing the exponentially large composed kernel, we use `conv_transpose2d` to build the virtual matrix incrementally, composing one layer at a time from output back to input.
+The picture below shows this rearrangement for a crop around the bear's face under two 5x5 convolutions with stride 2. Each sliding window is laid out as a non-overlapping $$25 \times 25$$ tile (the outer product $$k_1 \cdot k_2$$), so the windowed representation is several times larger than the original. Because adjacent windows overlap by $$k - s = 3$$ pixels, the same input pixels appear in many tiles, which shows up as a repeating texture in the rearranged image:
+
+<p align="center">
+  <img width="90%" src="{{ '/assets/images/kronecker/window_format_bear.png' | relative_url }}">
+</p>
+
+A key computational insight: we never need to materialize the windowed input or the full $$25 \times 25$$ Kronecker kernel. The **transpose convolution** of $$W_2$$ with $$W_1$$ (`conv_transpose2d(W_2, W_1, stride=s_1)`) is, by the adjoint relationship between convolution and transpose convolution, exactly the composed kernel on the *original* image grid — a $$13 \times 13$$ kernel applied at effective stride $$s_1 \cdot s_2 = 4$$. This is just the convolution / transpose-convolution identity; no overlap bookkeeping required.
+
+The figure below mirrors the earlier sequential-vs-composed picture, now for two 5x5 convolutions with stride 2. The top two rows run the layers sequentially ($$160 \times 190 \to 78 \times 93 \to 37 \times 45$$). The third row applies the full $$25 \times 25$$ Kronecker product $$W_2 \otimes W_1$$ to the windowed input at stride 25. The bottom row applies the transpose-convolution kernel $$W_2 \ast^\top W_1$$ ($$13 \times 13$$) directly to the original input at stride 4. All three paths produce the same $$37 \times 45$$ output:
+
+<p align="center">
+  <img width="80%" src="{{ '/assets/images/kronecker_sequential_vs_composed_stride2.png' | relative_url }}">
+</p>
 
 ## Kernel Size, Depth, and Rank
 
