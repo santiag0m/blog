@@ -22,7 +22,7 @@ The Kronecker product $$B \otimes C$$ creates a block matrix where each element 
 
 ### The rearrangement trick
 
-How do we find $$B$$ and $$C$$? The key insight ([Van Loan & Pitsianis, 1993](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.42.1924&rep=rep1&type=pdf)) is that if we split the image into a grid of blocks, flatten each block into a vector, and stack those vectors as rows of a new matrix, the SVD of that rearranged matrix directly gives us the Kronecker factors.
+How do we find $$B$$ and $$C$$? The key insight ([Van Loan & Pitsianis, 1993](https://link.springer.com/chapter/10.1007/978-94-015-8196-7_17)) is that if we split the image into a grid of blocks, flatten each block into a vector, and stack those vectors as rows of a new matrix, the SVD of that rearranged matrix directly gives us the Kronecker factors.
 
 The animation below shows this process step by step. Each patch is extracted from the original image (left, replaced by black) and its flattened pixels fill a row of the rearranged matrix (right):
 
@@ -408,7 +408,7 @@ The code and experiments are available at [github.com/santiag0m/kronecker](https
 
 ## References
 
-- Van Loan, C. F., and N. Pitsianis. ["Approximation with Kronecker Products."](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.42.1924&rep=rep1&type=pdf) Linear Algebra for Large Scale and Real-Time Applications. Springer, 1993.
+- Van Loan, C. F., and N. Pitsianis. ["Approximation with Kronecker Products."](https://link.springer.com/chapter/10.1007/978-94-015-8196-7_17) Linear Algebra for Large Scale and Real-Time Applications. Springer, 1993.
 - Zhou, S., Wu, J. N., Wu, Y., & Zhou, X. ["Exploiting Local Structures with the Kronecker Layer in Convolutional Networks."](https://arxiv.org/abs/1512.09194) arXiv preprint arXiv:1512.09194 (2015).
 - Zhang, A., et al. ["Beyond Fully-Connected Layers with Quaternions: Parameterization of Hypercomplex Multiplications with $$1/n$$ Parameters."](https://openreview.net/forum?id=rcQdycl0zyk) ICLR 2021.
 - Zeiler, M. D., & Fergus, R. ["Visualizing and Understanding Convolutional Networks."](https://arxiv.org/abs/1311.2901) European Conference on Computer Vision, 2014.
