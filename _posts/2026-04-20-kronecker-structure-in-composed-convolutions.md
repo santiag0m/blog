@@ -212,7 +212,7 @@ The picture below shows this rearrangement for a crop around the bear's face und
 
 In practice, we never need to materialize the windowed input or the full Kronecker kernel explicitly. Given the adjoint relationship between convolution and transpose convolution, `conv_transpose2d(W_2, W_1, stride=s_1)` returns the composed kernel directly on the original image grid, applied at effective stride $$s_1 \cdot s_2$$. The overlap bookkeeping implied by the window rearrangement is absorbed into the transpose-convolution operation itself.
 
-The figure below mirrors the earlier sequential-vs-composed picture, now for two 5x5 convolutions with stride 2. The top two rows run the layers sequentially. The third row applies the full Kronecker product $$W_2 \otimes W_1$$ to the windowed input. The bottom row applies the transpose-convolution kernel $$W_2 \ast^\top W_1$$ directly to the original input. All three paths produce the same output:
+The whole process can be observed in the figure below, which mirrors the earlier sequential-vs-composed picture, now for two 5x5 convolutions with stride 2. The top two rows run the layers sequentially. The third row applies the full Kronecker product $$W_2 \otimes W_1$$ to the windowed input. The bottom row applies the transpose-convolution kernel $$W_2 \ast^\top W_1$$ directly to the original input. All three paths produce the same output:
 
 <p align="center">
   <img width="80%" src="{{ '/assets/images/kronecker_sequential_vs_composed_stride2.png' | relative_url }}">
