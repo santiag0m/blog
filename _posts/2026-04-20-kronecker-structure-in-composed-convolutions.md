@@ -6,7 +6,7 @@ author: Raúl Santiago Molina
 
 This post is a technical note I've been sitting on since around 2019. At the time I was exploring what happens when you look at stacked convolutional layers as a single linear operation, and I noticed that the resulting virtual matrix has a very specific algebraic structure: it is a Kronecker product. Not because you choose to decompose it that way, but because it just *is* one, by construction.
 
-I never published this as a formal paper or explored it further as I got busy with work, although when a [paper using Kronecker factorization](https://openreview.net/forum?id=rcQdycl0zyk) appeared as an ICLR 2021 Outstanding Paper, I got excited because the same mathematical object I'd been studying from the *analysis* side was being used on the *design* side for parameter-efficient layers. That's what motivated my [earlier blog post]({{ '/2021/04/02/why-are-kronecker-products-so-effective.html' | relative_url }}) about why Kronecker products are so effective. I ended that post saying the Kronecker product would be "a crucial tool in the path to understanding Neural Networks." This post is the follow-through on that claim.
+I never published this as a formal paper or explored it further, as I got busy with work. Then, when a [paper using Kronecker factorization](https://openreview.net/forum?id=rcQdycl0zyk) appeared as an ICLR 2021 Outstanding Paper, I got excited: the same mathematical object I had been studying from the *analysis* side was being used on the *design* side for parameter-efficient layers. That coincidence motivated my [earlier blog post]({{ '/2021/04/02/why-are-kronecker-products-so-effective.html' | relative_url }}) about why Kronecker products are so effective. I ended that post saying the Kronecker product would be "a crucial tool in the path to understanding Neural Networks." This post is the follow-through on that claim.
 
 Now seemed like a good time to finally clean this up and write it out. Full disclosure: the code refactoring, visualizations, and much of the prose in this post were written with the help of [Claude Code](https://claude.ai/claude-code). The ideas and the original implementation are mine from 2019-2020; the presentation has been significantly improved by our collaboration. The analysis also includes a connection to gradient saliency maps that Claude spotted during our work together (thanks Claude!).
 
@@ -144,7 +144,7 @@ With color in $$C$$, the picture changes. The first two modes are dedicated to c
   <img width="95%" src="{{ '/assets/images/kronecker/rank5_bogota_color_in_C.png' | relative_url }}">
 </p>
 
-Keep this intuition in mind: **factor shapes control what gets captured at which scale**, and **rank determines how many dominant modes we retain**. The same structure shows up when we compose convolutional layers.
+Keep this intuition in mind: factor shapes control what gets captured at which scale, and rank determines how many dominant modes we retain. The same structure shows up when we compose convolutional layers.
 
 ## From Convolution to Matrix Multiplication
 
@@ -174,7 +174,7 @@ This is exact. The meta-kernel is the Kronecker product of the two individual ke
 
 The top two rows show sequential convolution (input → $$W_1$$ → intermediate → $$W_2$$ → output). The bottom row shows a single convolution with $$W_2 \otimes W_1$$ applied directly to the input. The outputs are identical.
 
-**The virtual matrix that maps input pixels to network output has Kronecker structure by construction.** It follows directly from what composed convolutions are.
+The virtual matrix that maps input pixels to network output therefore has Kronecker structure by construction, which follows directly from composing convolutional layers rather than from any design choice.
 
 ## What About ReLU?
 
@@ -254,7 +254,7 @@ For a pretrained AlexNet (12 layers), the **data-independent** composite kernels
 
 Without ReLU masking, the full Kronecker expansion of 12 layers produces a dense pattern dominated by the interaction of many small kernels.
 
-The **data-dependent** version (using ReLU masks from an apple image) tells a different story. Class-specific patterns emerge, with object-like silhouettes shaped by which neurons fired for that particular input. This version is **numerically exact**: multiplying the input by this virtual matrix produces the same logits as running the input through the full network.
+The **data-dependent** version, using ReLU masks from an apple image, tells a different story. Class-specific patterns emerge, with object-like silhouettes shaped by which neurons fired for that particular input. This version is also numerically exact, in the sense that multiplying the input by this virtual matrix produces the same logits as running the input through the full network.
 
 <p align="center">
   <img width="90%" src="{{ '/assets/images/kronecker_alexnet_kernels_data_dependent.png' | relative_url }}">
@@ -386,7 +386,7 @@ All differences are floating-point accumulation noise ($$\sim 10^{-6}$$ to $$10^
 
 ### What this means
 
-Saliency maps have been used since 2013 as a visualization tool, but their internal structure has not been analyzed. The Kronecker perspective reveals that **saliency maps inherit the same algebraic structure as composed convolutions**: each is a sum of Kronecker products, one per active channel at any cut point, with ReLU determining how many terms survive.
+Saliency maps have been used since 2013 as a visualization tool, but their internal structure has not been analyzed. The Kronecker perspective reveals that saliency maps inherit the same algebraic structure as composed convolutions: each is a sum of Kronecker products, one per active channel at any cut point, with ReLU determining how many terms survive.
 
 This connects two lines of work that have developed independently:
 - **Kronecker factorization** of composed convolutions, which reveals the rank and factor structure of the virtual matrix
