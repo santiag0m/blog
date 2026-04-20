@@ -196,6 +196,8 @@ $$
 W_{meta} = \sum_{i=1}^{p} W_2^{(i)} \otimes W_1^{(i)}
 $$
 
+As a simpler example, composing two linear layers of shapes $$d_1 \times p$$ and $$p \times d_2$$ yields a matrix of rank at most $$p$$, with the hidden dimension bounding the rank of the composition. The number of shared channels $$p$$ plays the same rank-bounding role here.
+
 This is the same form as the [KFC](https://arxiv.org/abs/1512.09194) and [PHM](https://openreview.net/forum?id=rcQdycl0zyk) layers from the previous post, but here it arises from composition, not from a design choice.
 
 ## Relaxing the Stride Constraint
