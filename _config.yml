@@ -1,0 +1,5 @@
+theme: jekyll-theme-slate
+title: Blog
+baseurl: /blog
+github:
+  is_project_page: false
